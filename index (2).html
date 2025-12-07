@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vishnuprakash VS | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Vishnuprakash VS - Aspiring Software Developer." />
+  <!-- Font & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --card: #f3f4f6;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.12);
+      --text: #0f172a;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Poppins", system-ui, sans-serif;
+      background-color: #ffffff;
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth; /* smooth scrolling for navbar links */
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .page { max-width: 1100px; margin: 0 auto; padding: 72px 18px 48px; }
+
+    /* NAVBAR */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    nav { display: flex; gap: 18px; font-size: 14px; }
+    nav a {
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 2px;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 0; height: 2px;
+      background: var(--accent);
+      transition: width 0.2s;
+    }
+    nav a:hover::after { width: 100%; }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 8px;
+    }
+    .hero-title { font-size: 32px; font-weight: 600; margin-bottom: 8px; }
+    .hero-text { font-size: 14px; color: var(--muted); margin-bottom: 12px; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .hero-tag {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      border-radius: 999px;
+      padding: 8px 18px;
+      font-size: 13px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary {
+      background: linear-gradient(120deg, #22c55e, #4ade80);
+      color: #022c22;
+      font-weight: 600;
+    }
+    .btn-outline {
+      border-color: var(--border);
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    /* HERO CARD + IMAGE LINK */
+    .hero-card {
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, var(--accent-soft), transparent 55%);
+      pointer-events: none;
+    }
+    .hero-card-inner { position: relative; z-index: 1; }
+    .hero-image-wrap {
+      width: 150px;
+      height: 150px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 2px solid var(--accent-soft);
+      margin-bottom: 8px;
+    }
+    .hero-image { width: 100%; height: 100%; object-fit: cover; }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .hero-name { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+    .hero-metric { font-size: 13px; color: var(--muted); margin-bottom: 2px; }
+    .hero-metric strong { color: var(--accent); }
+    .hero-contact { font-size: 12px; color: var(--muted); margin-top: 6px; }
+    .hero-contact span { display: block; }
+    .hero-socials { display: flex; gap: 10px; margin-top: 10px; font-size: 16px; }
+    .hero-socials a {
+      width: 30px; height: 30px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted);
+      background: #ffffff;
+    }
+    .hero-socials a:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* COMMON SECTIONS */
+    section { margin-bottom: 40px; }
+    .section-title { font-size: 18px; margin-bottom: 10px; }
+    .section-subtitle { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .card {
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      padding: 14px 14px 12px;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .card-title { font-size: 14px; font-weight: 500; }
+    .card-meta { font-size: 11px; color: var(--muted); text-align: right; }
+    .card-body { font-size: 13px; color: var(--muted); }
+    .card-body ul { list-style: none; margin-top: 6px; }
+    .card-body li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 3px;
+    }
+    .card-body li::before {
+      content: "•";
+      position: absolute;
+      left: 0; top: 0;
+      color: var(--accent);
+    }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .pill {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .edu-item { margin-bottom: 6px; }
+    .edu-degree { font-size: 14px; font-weight: 500; }
+    .edu-meta { font-size: 12px; color: var(--muted); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    @media (max-width: 768px) {
+      header { flex-direction: column; align-items: flex-start; }
+      .page { padding-top: 120px; }
+      .hero { grid-template-columns: minmax(0, 1fr); }
+      .grid-2 { grid-template-columns: minmax(0, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR (all links scroll to sections) -->
+  <header>
+    <div class="logo">VISHNUPRAKASH VS</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="page">
+    <!-- ABOUT / HERO -->
+    <section class="hero" id="about">
+      <div>
+        <div class="hero-subtitle">Aspiring Software Developer</div>
+        <h1 class="hero-title">Building AI‑driven and full‑stack solutions.</h1>
+        <p class="hero-text">
+          Software developer with experience in Python, JavaScript, React.js, Node.js, MongoDB, and MySQL, focusing on intelligent systems and scalable web applications.
+        </p>
+        <div class="hero-tags">
+          <span class="hero-tag">Python</span>
+          <span class="hero-tag">AI &amp; ML</span>
+          <span class="hero-tag">React.js</span>
+          <span class="hero-tag">Node.js</span>
+          <span class="hero-tag">MongoDB</span>
+          <span class="hero-tag">MySQL</span>
+        </div>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            <span>View projects</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="Vishnuprakash_vs_resume-.pdf-5.pdf" class="btn btn-outline" download>
+            <i class="fa-regular fa-file-lines"></i>
+            <span>Download resume</span>
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-card-inner">
+          <div class="hero-image-wrap">
+            <!-- IMAGE AS LINK (click image to open GitHub) -->
+            <a href="https://github.com/vishnuprakashvs" target="_blank">
+              <img src="https://images.pexels.com/photos/34603874/pexels-photo-34603874.jpeg" alt="Vishnuprakash VS" class="hero-image" />
+            </a>
+          </div>
+          <div class="badge-pill">
+            <span style="width:6px;height:6px;border-radius:999px;background:var(--accent);display:inline-block;"></span>
+            Open to opportunities
+          </div>
+          <div class="hero-name">Vishnuprakash VS</div>
+          <p class="hero-metric">
+            <strong>B.E. Computer Science and Engineering</strong> with focus on AI‑driven applications and full‑stack development.
+          </p>
+          <p class="hero-metric">
+            Experience with intelligent frameworks, event‑driven architectures, and performance‑optimized web apps.
+          </p>
+          <div class="hero-contact">
+            <span>Salem, India</span>
+            <span>Mobile: <a href="tel:+918072804102">+91‑8072804102</a></span>
+            <span>Email: <a href="mailto:vishnuprakash793@gmail.com">vishnuprakash793@gmail.com</a></span>
+          </div>
+          <div class="hero-socials">
+            <a href="https://github.com/vishnuprakashvs" target="_blank" aria-label="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/vishnuprakash-v-s-20561a21b" target="_blank" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">AI and system‑focused work from academics and internships.</p>
+      <div class="grid-2">
+        <article class="card">
+          <div class="card-header">
+            <div class="card-title">Strengthening Cyberdefence Using Event‑Driven ANN</div>
+            <div class="card-meta">Jan 2024 – Apr 2024<br />Cybersecurity · AI</div>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>Built an ANN‑based threat detection system with event‑driven architecture for real‑time security monitoring.</li>
+              <li>Trained on malware, phishing, and DDoS scenarios for multi‑category threat detection.</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">Python</span>
+              <span class="pill">ANN</span>
+              <span class="pill">Security</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <div class="card-title">AI‑Driven Smart Car Parking System</div>
+            <div class="card-meta">Jan 2023 – Apr 2023<br />Smart Systems · AI</div>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>Designed an AI model to allocate parking slots using sensor data, distance, and vehicle dimensions.</li>
+              <li>Focused on accurate slot suggestions and better parking utilization.</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">Python</span>
+              <span class="pill">ANN</span>
+              <span class="pill">IoT</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      <p class="section-subtitle">Practical exposure in web development and AI/ML roles.</p>
+      <div class="grid-2">
+        <article class="card">
+          <div class="card-header">
+            <div class="card-title">Web Development Intern · E.D.I.Z.O Pvt Ltd</div>
+            <div class="card-meta">Jan 2025 – Jul 2025</div>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>Contributed to a task‑management web app with HTML, CSS, JavaScript, React.js, Node.js, and MongoDB.</li>
+              <li>Optimized frontend components and backend APIs to improve performance.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <div class="card-title">AI / ML Intern · Embrizon Technologies</div>
+            <div class="card-meta">3 Months</div>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>Built a stock‑price prediction model that improved forecasting accuracy and supported decisions.</li>
+              <li>Prepared visuals and presentations to explain trends and model behaviour.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS & EDUCATION -->
+    <section id="skills">
+      <h2 class="section-title">Skills & Education</h2>
+      <div class="grid-2">
+        <article class="card">
+          <div class="card-title" style="margin-bottom:6px;">Technical skills</div>
+          <div class="card-body">
+            <div class="pill-row">
+              <span class="pill">Python</span><span class="pill">JavaScript</span><span class="pill">Java</span>
+              <span class="pill">React.js</span><span class="pill">HTML</span><span class="pill">CSS</span>
+              <span class="pill">Node.js</span><span class="pill">Django</span><span class="pill">MySQL</span>
+              <span class="pill">MongoDB</span><span class="pill">Git</span><span class="pill">VS Code</span>
+              <span class="pill">ANN</span><span class="pill">Machine Learning</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-title" style="margin-bottom:6px;">Soft skills</div>
+          <div class="card-body">
+            <div class="pill-row">
+              <span class="pill">Problem solving</span><span class="pill">Communication</span>
+              <span class="pill">Time management</span><span class="pill">Continuous learning</span>
+              <span class="pill">Mentorship</span><span class="pill">Leadership</span>
+              <span class="pill">Critical thinking</span><span class="pill">Adaptability</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-title" style="margin-bottom:6px;">Education</div>
+          <div class="card-body">
+            <div class="edu-item">
+              <div class="edu-degree">B.E. – Computer Science and Engineering</div>
+              <div class="edu-meta">Paavai College of Engineering · CGPA: 7.1</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-title" style="margin-bottom:6px;">Certifications</div>
+          <div class="card-body">
+            <ul>
+              <li>Full Stack Development – NxtWave</li>
+              <li>Data Structures and Algorithms using Python</li>
+              <li>Artificial Intelligence &amp; Machine Learning</li>
+              <li>The Complete Web Development</li>
+              <li>3D Printing and CAD Modelling</li>
+              <li>DevOps – Naan Mudhalvan</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-subtitle">Reach out for internships, full‑time roles, or collaboration.</p>
+      <div class="card">
+        <div class="card-body">
+          <p>Email: <a href="mailto:vishnuprakash793@gmail.com">vishnuprakash793@gmail.com</a></p>
+          <p>Phone: <a href="tel:+918072804102">+91‑8072804102</a></p>
+          <p>GitHub: <a href="https://github.com/vishnuprakashvs" target="_blank">github.com/vishnuprakashvs</a></p>
+          <p>LinkedIn: <a href="https://www.linkedin.com/in/vishnuprakash-v-s-20561a21b" target="_blank">linkedin.com/in/vishnuprakash-v-s-20561a21b</a></p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>&copy; <span id="year"></span> Vishnuprakash VS</span>
+      <span>Built with HTML &amp; CSS</span>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
